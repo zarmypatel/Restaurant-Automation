@@ -1,0 +1,103 @@
+{%load static%}
+  
+<!DOCTYPE html>
+<html>    
+	<head>        
+		   
+		<title>Home</title> 
+		  <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}">
+ </head>    
+	<body>
+	   
+{% block content %}
+<div class="main">
+
+        <h1>Restaurant XYZ</h1>
+<hr>
+
+
+ <div class="topnav">
+  <a class="active" href="/admin/login/?next=/admin/">Admin</a>
+  <a href="/manageorder/change_pass">Change Password</a>
+  <a href="/manageorder/logout/">Log Out</a>
+</div> 
+<h2>Menu Items :</h2>
+<form action="/manageorder/addorder/" method="post">
+{% csrf_token %}
+
+<h2>Pizzas :</h2>
+<div class="row">
+   {% for p in pizza %}
+        <div class="column">
+       <div class="content">
+      <h4>{{p.item_name}}</h4>
+      <p> {{p.item_price}}</p>
+      <input type="number" name={{p.item_id}} min="1" value="1" >
+     <input type="checkbox" name={{p.item_name}}>
+    </div>
+    </div>
+{% endfor %}
+
+</div>  
+
+
+<h2>Burgers :</h2>
+<div class="row">
+   {% for p in burger %}
+        <div class="column">
+       <div class="content">
+      <h4>{{p.item_name}}</h4>
+      <p> {{p.item_price}}</p>
+      <input type="number" name={{p.item_id}} min="1" value="1" >
+     <input type="checkbox" name={{p.item_name}}>
+    </div>
+    </div>
+{% endfor %}
+
+</div>  
+
+
+<h2>Maggie :</h2>
+<div class="row">
+   {% for p in maggie %}
+        <div class="column">
+       <div class="content">
+      <h4>{{p.item_name}}</h4>
+      <p> {{p.item_price}}</p>
+      <input type="number" name={{p.item_id}} min="1" value="1" >
+     <input type="checkbox" name={{p.item_name}}>
+    </div>
+    </div>
+{% endfor %}
+
+</div>  
+
+
+<h2>Drinks :</h2>
+<div class="row">
+   {% for p in drinks %}
+        <div class="column">
+       <div class="content">
+      <h4>{{p.item_name}}</h4>
+      <p> {{p.item_price}}</p>
+      <input type="number" name={{p.item_id}} min="1" value="1" >
+     <input type="checkbox" name={{p.item_name}}>
+    </div>
+    </div>
+{% endfor %}
+
+</div>  
+
+
+<center>
+<input type="text" name="name" placeholder="Enter your Name" required><br>
+<input type="text" name="mob" placeholder="Enter your Conatact no" required><br>
+<input type="email" name="email" placeholder="Enter your email" required><br>
+<input type="submit" name="submit" value="Order">
+<center>
+</form>
+{% endblock %}
+
+</div>   
+	</body>
+</html>

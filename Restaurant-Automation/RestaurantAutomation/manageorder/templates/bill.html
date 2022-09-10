@@ -1,0 +1,80 @@
+{%load static%}  
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Invoice</title>
+		<link rel="stylesheet" type="text/css" href="{% static '/bill.css' %}">
+		<link rel="license" href="https://www.opensource.org/licenses/mit-license/">
+		
+	</head>
+	<body>
+		{% block content %}
+		<header>
+			<h1>Invoice</h1>
+			<address contenteditable>
+				<p>Restaurant XYZ</p>
+				<p>101 Near DDIT college<br>Nadiad, 387001</p>
+				<p>9876543210</p>
+			</address>
+			
+		</header>
+		<article>
+			  <h1>Recipient</h1>
+			
+				<p>By<br> {{staff}}</p>
+				
+			<table class="meta">
+				<tr>
+					<th><span contenteditable>Invoice #</span></th>
+					<td><span contenteditable>{{bill_no}}</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Date</span></th>
+					<td><span contenteditable>{{date}}</span></td>
+				</tr>
+			
+			</table>
+			<table class="inventory">
+				<thead>
+					<tr>
+
+    <th><span contenteditable>Name</span></th>
+    <th><span contenteditable>Price</span></th>
+    <th><span contenteditable>Quantity</span></th>
+    <th><span contenteditable>total</span></th>
+  
+					</tr>
+				</thead>
+				<tbody>
+					
+
+{% for i in m %}
+     <tr>
+      {% for j in i %}
+     
+      <td><span contenteditable>{{j}}</span></td>
+        
+     
+{% endfor %}
+    </tr>
+{% endfor %}
+
+					
+				</tbody>
+			</table>
+			
+			<table class="balance">
+				<tr>
+					<th><span contenteditable>Total</span></th>
+					<td><span data-prefix></span><span>{{amount}}</span></td>
+				</tr>
+				
+			</table>
+			
+		</article>
+			<a href="../index/">Home</a><!-- <a href="../print/">Print</a> -->
+		{% endblock %}
+	</body>
+</html>

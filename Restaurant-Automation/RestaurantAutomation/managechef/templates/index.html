@@ -1,0 +1,28 @@
+{%load static%}
+<!DOCTYPE html>
+<html>    
+	<head>        
+		   
+		<title>Home</title> 
+		<link rel="stylesheet" type="text/css" href="{% static '/style.css' %}">
+</head>
+ </head>    
+	<body>
+	<div class="r">
+        <table>
+        <tr>
+        <td><h1>Restaurant XYZ</h1></td>
+        </tr>
+        </table>
+        </div>  
+		
+		<center>
+{% block content %}
+
+<p> Click <a href="/managechef/logout/"> here </a> logout. </p>
+<p> Click <a href="/managechef/change_pass"> here </a> to Change Password. </p>
+
+{% endblock %}
+</center>    
+	</body>
+</html>
