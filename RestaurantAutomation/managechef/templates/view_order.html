@@ -1,0 +1,49 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Home</title>
+  <link rel="stylesheet" type="text/css" href="{% static '/tables.css' %}">
+</head>
+<body>
+	{% block content %}
+
+	{% if msg %}
+	{{ msg }}
+	{% endif %}
+	
+	
+ <div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="../change_pass/">Change Password</a>
+  <a href="../logout/">Logout</a>
+</div> 
+<br>
+
+	<form action="../updateOrder/" method="post">
+{% csrf_token %}
+<table id="customers">
+ <tr>
+
+    <th>Order No</th>
+    <th>Menu Item</th>
+    <th>Quantity</th>
+    <th>Ready ?</th>
+
+
+    
+  </tr>
+{% for o in order %}
+     <tr>
+        <td>{{o.order_no}}</td>
+        <td>{{o.menu_item}}</td>
+        <td>{{o.item_quantity}}</td>
+         <input type="hidden" name="order_id" value={{o.order_id}}>
+        <td><button type="submit">Ready</button></td>
+     </tr>
+{% endfor %}
+</table>
+</form>
+{% endblock %}
+</body>
+</html>
